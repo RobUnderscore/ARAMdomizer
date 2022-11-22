@@ -1,6 +1,6 @@
 
 export const getChampions = async () => {
-    const response = await fetch("http://ddragon.leagueoflegends.com/cdn/12.22.1/data/en_US/champion.json");
+    const response = await fetch("https://ddragon.leagueoflegends.com/cdn/12.22.1/data/en_US/champion.json");
     const champions = await response.json();
     return champions;
 }
