@@ -1,4 +1,4 @@
-import { Button, Card, CardMedia, ThemeProvider, CssBaseline, Grid, Typography, Box, Slider } from '@mui/material'
+import { Card, CardMedia, Grid, Typography, Box, Zoom } from '@mui/material'
 
 function ChampionList({teamName, championList}) {
     return (
@@ -7,14 +7,16 @@ function ChampionList({teamName, championList}) {
             <Typography variant="h5" sx={{ padding: '2px' }}>{teamName}</Typography>
             <Grid container spacing={0}>
                 {
-                championList.map((champion) => {
-                    return <Box sx={{ position: 'relative' }} key={champion.key}>
+                championList.map((champion, i) => {
+                    return <Box sx={{ position: 'relative' }} key={champion.key+'-'+i}>
                     <Card>
-                    <CardMedia
-                        component="img"
-                        sx={{ height: 100 }}
-                        image={`http://ddragon.leagueoflegends.com/cdn/12.22.1/img/champion/${champion.id}.png`}
-                        key={champion.key} />
+                        <Zoom in>
+                            <CardMedia
+                            component="img"
+                            sx={{ height: 100, width: 100 }}
+                            image={`http://ddragon.leagueoflegends.com/cdn/12.22.1/img/champion/${champion.id}.png`}
+                            key={champion.key} />
+                        </Zoom>
                         <Box
                         sx={{
                             position: 'absolute',

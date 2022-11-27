@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getChampions, getItems } from './api/datadragon'
-import { Button, Card, CardMedia, ThemeProvider, CssBaseline, Grid, Typography, Box, Slider, TextField } from '@mui/material'
+import { Button, Card, CardMedia, ThemeProvider, CssBaseline, Grid, Typography, Box, Zoom, TextField } from '@mui/material'
 import { appTheme } from "./themes/theme";
 import ChampionList from './ChampionList';
 
@@ -199,15 +199,13 @@ function App() {
           <Typography variant="h5" sx={{ padding: '2px' }}>Items</Typography>
           <Grid container spacing={0}>
               {
-                sixItems.map((item) => {
-                  var path = item.iconPath.split("/")
-                  const [pngName] = path.slice(-1)
-                  return <Box sx={{ position: 'relative' }} key={item.id}>
+                sixItems.map((item, i) => {
+                  return <Box sx={{ position: 'relative' }} key={item.id+'-'+i}>
                     <Card>
-                    <CardMedia
+                    <Zoom in><CardMedia
                       component="img"
-                      sx={{ height: 96 }}
-                      image={`http://ddragon.leagueoflegends.com/cdn/12.22.1/img/item/${item.id}.png`} />
+                      sx={{ height: 96, width: 96 }}
+                      image={`http://ddragon.leagueoflegends.com/cdn/12.22.1/img/item/${item.id}.png`} /></Zoom>
                       <Box
                         sx={{
                           position: 'absolute',
